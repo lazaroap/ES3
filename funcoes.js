@@ -8,8 +8,8 @@ for (let i = 0; i < 2; i++) {
     const name = faker.name.findName();
     const birth = faker.date.past(109, 2019);
     const genre = faker.random.boolean() == true ? 'M' : 'F';
-    const lastPurchase = faker.date.past();
-    const countPurchase = faker.random.number(100);
+    const lastPurchase = faker.date.past(20,2019);
+    const countPurchase = faker.random.number(50);
 
 
     client = {
@@ -55,30 +55,33 @@ const firstName =  clients.map(clients => clients.name.split(' ')[0]);
 //************************************************************************************************************************************************************************************
 //Desenvolva uma função que retorne apenas o primeiro nome dos clientes cujo os nomes começam com o caractere de entrada da função.
 const firstNameLetter = clients.filter(clients => clients.name[0] == 'A').map(clients => clients.name.split(' ')[0]);
-console.log(firstNameLetter)
+//console.log(firstNameLetter);
 
 
 //************************************************************************************************************************************************************************************
 //Desenvolva uma função que retorne todos os usuários que são maiores de idade.
-
+const isAdult = clients.filter(clients => clients.birth <= 2001);
+//console.log(isAdult);
 
 
 //************************************************************************************************************************************************************************************
 //Desenvolva uma função que, dado um nome de entrada, retorna se o nome está contido na lista.
-const firstNameIsValid = (clients.map(clients => clients.name.split(' ')[0]).filter(clients => clients == 'Aline')).length > 0 ? 'Nome consta na lista' : 'Nome não consta na lista'
+const firstNameIsValid = (clients.map(clients => clients.name.split(' ')[0]).filter(clients => clients == 'Aline')).length > 0 ? 'Nome consta na lista' : 'Nome não consta na lista';
 //console.log(firstNameIsValid);
 
 
 //************************************************************************************************************************************************************************************
 //Implemente uma função que retorna o total de vendas realizadas somando as compras de todos os clientes.
-const totalPurchase = clients.map(clients => clients.countPurchase).reduce((sum, next) => sum += next)
+const totalPurchase = clients.map(clients => clients.countPurchase).reduce((sum, next) => sum += next);
 //console.log(totalPurchase)
 
 
 //************************************************************************************************************************************************************************************
 //Implemente uma função que retorne os dados dos clientes que não compram há mais de 1 ano.
-
+const purchase = clients.filter(clients => clients.lastPurchase <= 2018);
+//console.log(purchase);
 
 //************************************************************************************************************************************************************************************
 //Implemente uma função que retorne os dados dos clientes que já realizaram mais de 15 compras.
-
+const moreThan = clients.filter(clients => clients.countPurchase > 15);
+//console.log(moreThan)
